@@ -58,7 +58,12 @@ def banner():
 	wel = '# TOOLS CRACK ZANCOK V2'
 	wel2 = mark(wel, style='cyan')
 	sol().print(wel2)
-	au='_________________  _________  ____  __. |\n\____    /\      \ \_   ___ \|    |/ _| |[•]Au : Andika\n  /     / /   |   \/    \  \/|      <   |[•]Wa : 081375182098\n /     /_/    |    \     \___|    |  \  |[•]Fb : Mark.Zuckerberg.XV\n/_______ \____|__  /\______  /____|__ \ |[•]Gh : XhurayraEAAG\n        \/       \/        \/        \/ |'
+	au='______     __      ____             _ 
+  / ____/__  / /__   / __ \____  _____(_)
+ / /   / _ \/ //_/  / / / / __ \/ ___/ / Coded By: GF-ELITE
+/ /___/  __/ ,<    / /_/ / /_/ (__  ) / 
+\____/\___/_/|_|   \____/ .___/____/_/   
+                       /_/               '
 	pengembang1=nel(au,style="cyan")
 	cetak(nel(pengembang1, title='INFO SC'))
 
